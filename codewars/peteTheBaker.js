@@ -8,3 +8,16 @@
 // cakes({apples: 3, flour: 300, sugar: 150, milk: 100, oil: 100}, {sugar: 500, flour: 2000, milk: 2000});
 
 // link: https://www.codewars.com/kata/525c65e51bf619685c000059
+
+function cakes(recipe, available) {
+  let amountArr = [];
+  for (const [key, val] of Object.entries(recipe)) {
+    if (available.hasOwnProperty(key)) {
+      amountArr.push(available[key] / recipe[key]);
+    } else {
+      return 0;
+    }
+  }
+  let amountOfCakes = Math.floor(Math.min(...amountArr));
+  return amountOfCakes;
+}
